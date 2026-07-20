@@ -87,6 +87,7 @@ ALLOWED_IGNORE_NEGATIONS = {
     "!documents/**/.gitkeep",
     # Sanitized personalised-CV template + its generation prompt (no contact data)
     "!personalised/main.tex",
+    "!personalised/rewrite-cv.md",
     "!changes/step7-personalised-cv-prompt.md",
     # OAuth config template with placeholder values only
     "!auth/gmail-config.example.json",

@@ -103,6 +103,7 @@ CLAUDE.md
 # Personal workspace artifacts (email scans, CVs, reports — never push)
 personalised/*
 !personalised/main.tex
+!personalised/rewrite-cv.md
 emails_HR/
 interview_prepare_questions/
 reports/
