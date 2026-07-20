@@ -1,3 +1,8 @@
+---
+name: email-scanner
+description: Read-only Gmail ingestion for the job-search workflow. Scans Gmail for messages related to tracked applications, classifies them, and archives them under documents/applications/<company>_<role>/emails/.
+---
+
 # email-scanner (agent skill)
 
 Read-only Gmail ingestion for the job-search workflow. The CLI lives at

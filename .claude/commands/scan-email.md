@@ -1,9 +1,6 @@
----
-description: Scan Gmail (read-only) and archive recruiter emails under tracked applications
-argument-hint: "[--since YYYY-MM-DD] [--company <name>] [--dry-run] [--limit N] [--llm-base-url <url>] [--llm-model <name>]"
----
-
 # /scan-email — Archive recruiter correspondence
+
+Flags: `[--since YYYY-MM-DD] [--company <name>] [--dry-run] [--limit N] [--llm-base-url <url>] [--llm-model <name>]`
 
 You are running a read-only Gmail scan to find messages related to tracked
 job applications and archive them under each application's `emails/`
