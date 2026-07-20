@@ -4,13 +4,13 @@ description: Use this agent to scan Gmail (read-only) for messages related to tr
 mode: subagent
 model: anthropic/claude-sonnet-4-5
 tools:
-  bash: true
-  read: true
-  grep: true
-  glob: true
-  write: false
-  edit: false
-  webfetch: false
+  - Bash(python -m tools.email_scanner:plan*)
+  - Bash(python -m tools.email_scanner:apply*)
+  - Bash(python -m tools.email_scanner:revoke*)
+  - Bash(python -m tools.email_scanner:status*)
+  - Read
+  - Grep
+  - Glob
 permission:
   bash:
     "python -m tools.email_scanner plan*": allow

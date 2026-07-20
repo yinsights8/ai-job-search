@@ -101,11 +101,13 @@ CLAUDE.md
 .opencode/skills/job-scraper/search-queries.md
 
 # Personal workspace artifacts (email scans, CVs, reports — never push)
-personalised/
+personalised/*
+!personalised/main.tex
 emails_HR/
 interview_prepare_questions/
 reports/
-changes/
+changes/*
+!changes/step7-personalised-cv-prompt.md
 plan.json
 plan_*.json
 plan_stderr.txt

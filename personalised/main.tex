@@ -1,0 +1,98 @@
+% CANONICAL SECTION ORDER (do not reorder):
+%   PROFILE -> WORK EXPERIENCE -> PROJECTS -> EDUCATION -> SKILLS
+% SKILLS MUST be the last section, not second. See SKILL.md Step 6 and apply.md
+% Step 7 for the workflow that depends on this order.
+%
+% Location heading in the document body: city only, no parentheticals
+% (e.g. "Glasgow, UK", not "Glasgow, UK (willing to relocate; UK Graduate
+% visa, no sponsorship required)"). See CLAUDE.md "No relocation/visa notes
+% in CV headings" for the full rule.
+\documentclass[11pt,a4paper, sans-serif]{article}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=0.75in]{geometry}
+% colorlinks=true renders email, LinkedIn, GitHub, and project URLs in blue.
+% Do NOT switch to [hidelinks] — that hides all links and breaks the
+% highlighted-hyperlink contract that the workflow depends on.
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=blue]{hyperref}
+% \usepackage{fontawesome}
+\usepackage{needspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+
+\titleformat{\section}{\large\scshape\bfseries}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{5pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\LARGE \bfseries Firstname Lastname} \\[5pt]
+    Glasgow, UK $|$ +44 0000000000 $|$ \href{mailto:candidate@example.com}{candidate@example.com} $|$ 
+    \href{https://linkedin.com}{LinkedIn} $|$ \href{https://github.com}{GitHub}
+\end{center}
+
+\vspace{10pt}
+
+% Profile
+\section*{PROFILE}
+\noindent AI Engineer specialising in Generative AI, Large Language Models, Retrieval-Augmented Generation (RAG), and production AI systems. Experienced building and deploying cloud-native AI applications using Python, FastAPI, LangChain, Docker, AWS, LangSmith, and Ragas, taking solutions from research through production. Delivered measurable improvements including 24\% higher retrieval recall, 48\% lower LLM token usage, and 97\% faster large-scale data processing, while applying responsible AI practices through bias auditing and continuous LLM evaluation.
+
+% Work Experience
+\section*{WORK EXPERIENCE}
+
+\noindent\textbf{NeuraSearch Laboratory} $|$ \textbf{AI Research Intern} $|$ Glasgow, UK (Remote) \hfill Oct 2025 - Feb 2026
+\begin{itemize}[leftmargin=*, nosep]
+    \item Built an LLM-based retrieval pipeline with OpenAI and LangChain, from prompt design and document ingestion through retrieval tuning and output assessment.
+    \item Compared multiple language models and retrieval strategies using LangSmith and Ragas across large evaluation datasets, identifying the best-performing configuration and improving retrieval recall by 24\% while maintaining answer faithfulness.
+    \item Cut token overhead by 48\% with RECOMP compression while maintaining measured faithfulness scores.
+    \item Automated document processing with a reusable Python pipeline, reducing processing time per 100-document batch by 97\%.
+    \item Documented model behaviour, experiment configurations, and findings so workflows stayed reproducible after handover.
+\end{itemize}
+
+
+\noindent\textbf{CL Techno} $|$ \textbf{(Volunteer) AI Engineer} $|$ London, UK (Remote) \hfill Feb 2024 - Feb 2025
+
+\begin{itemize}[leftmargin=*, nosep]
+    \item Built an automated machine learning workflow using Python, PyTorch and Docker, connecting preprocessing, training, evaluation and inference into a single end-to-end pipeline that eliminated manual intervention. 
+    \item Improved a production computer vision model through iterative tuning and deployment optimisation, increasing inference accuracy from 84\% to 86\% while supporting live client deployments. 
+    \item Collaborated fully remotely through written communication and GitHub, independently delivering documented code, technical updates and reusable solutions across distributed teams.
+\end{itemize}
+
+
+\noindent\textbf{Gamaka AI} $|$ \textbf{Data Analyst Intern} $|$ Pune, India \hfill Jul 2023 - Dec 2023
+\begin{itemize}[leftmargin=*, nosep]
+    \item Developed a customer spend-prediction model for e-commerce users using regression techniques, achieving 98\% validation accuracy.
+    \item Analysed business data using Python, SQL, and statistical techniques, presenting actionable insights to non-technical stakeholders through Power BI dashboards.
+\end{itemize}
+
+% Projects
+\section*{PROJECTS}
+\noindent\textbf{Violence Detection using Deep Learning} \\
+\noindent Developed and deployed a Vision Transformer (ViT) image classification system using PyTorch, achieving 98.82\% accuracy on approximately 3,000 images. Benchmarked multiple deep learning architectures and optimised model performance through transfer learning and systematic evaluation across Precision, Recall, F1-score and ROC-AUC.
+
+\noindent\textbf{Archival Retrieval Analytics System (RAG)} \\
+\noindent Built a large-scale data analytics pipeline processing 121k+ documents using Python-based preprocessing and machine learning evaluation methods. Applied statistical benchmarking techniques to compare retrieval approaches and measure model performance improvements.
+
+% Education
+\section*{EDUCATION}
+
+\noindent\textbf{MSc Advanced Computer Science with AI} $|$ University of Strathclyde, UK \hfill Sep 2024 - Sep 2025 
+\textbf{Dissertation:} Auditing Bias in Retrieval-Augmented Generation Systems Using Cultural Heritage Archives. \\
+\textbf{Modules:} Machine Learning, Deep Learning, Big Data Tools and Techniques, Quantitative Methods for AI.
+
+% Skills
+\section*{SKILLS}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{Gen AI \& LLM Engineering:} LangChain, RAG, OpenAI API, prompt engineering, MCP protocol, agentic workflows, LLM fine-tuning.
+    \item \textbf{MLOps \& LLMOps:} LangSmith observability, Ragas evaluation (faithfulness, relevancy, hallucination rate), experiment tracking, monitoring, evaluation.
+    \item \textbf{Deep Learning:} PyTorch, TensorFlow 2.x, Transformers, transfer learning, fine-tuning.
+    \item \textbf{Cloud \& Tools:} AWS (S3, EC2, SageMaker), Docker, Linux, GitHub.
+    \item \textbf{Responsible AI \& AI-Assisted Development:} bias auditing in RAG systems, fairness-aware evaluation, agentic development with Claude Code and Cursor.
+\end{itemize}
+
+\end{document}
