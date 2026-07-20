@@ -75,3 +75,45 @@ upskill/*.md
 
 # Brainstorm mockups (superpowers visual companion) - never ship
 .superpowers/
+
+# Local environment config (may hold API keys — never commit)
+.env
+
+# Personalised files with contact/profile data — sanitized .example templates are tracked instead
+CLAUDE.md
+.claude/skills/job-application-assistant/01-candidate-profile.md
+.claude/skills/job-application-assistant/02-behavioral-profile.md
+.claude/skills/job-application-assistant/03-writing-style.md
+.claude/skills/job-application-assistant/SKILL.md
+.claude/skills/job-scraper/search-queries.md
+.opencode/skills/job-application-assistant/01-candidate-profile.md
+.opencode/skills/job-application-assistant/02-behavioral-profile.md
+.opencode/skills/job-application-assistant/03-writing-style.md
+.opencode/skills/job-application-assistant/SKILL.md
+.opencode/skills/job-scraper/search-queries.md
+
+# Personal workspace artifacts (email scans, CVs, reports — never push)
+personalised/
+emails_HR/
+interview_prepare_questions/
+reports/
+changes/
+plan.json
+plan_*.json
+plan_stderr.txt
+cover_letters/*.txt
+cv/*.docx
+cv/registers_of_scotland/
+.playwright-mcp/
+*.stackdump
+dashboard/*.exe
+dashboard/*.exe~
+
+# OAuth credentials and tokens (never commit)
+auth/oauth-client.json
+auth/gmail-config.json
+auth/tokens.json
+auth/*.token
+auth/*token*.json
+# Allow the example template to be tracked
+!auth/gmail-config.example.json

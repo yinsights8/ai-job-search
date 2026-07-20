@@ -168,6 +168,22 @@ The font wrapper is mandatory — if you just move `\begin{itemize}` outside `\l
 - [ ] Salutation is appropriate (named person if possible)
 - [ ] Headline is engaging and specific, not generic
 
+## Established Formulations from Past Applications
+
+*Extracted from the Sunhat, Exeter, and Cambridge letters (June 2026). Structurally distinct patterns worth reusing:*
+
+**Opening (hook on posting's own language):**
+> I am writing to apply for the [role] at [company]. The "[phrase from posting]" framing in your job description resonates with work I have been doing for the past year and a half: [one-sentence tie to own work].
+
+**Core evidence paragraph (metric trio):**
+> In my Archival RAG project I built a hybrid retrieval system over 121,700 documents - FAISS, BM25, and HuggingFace embeddings fused with RRF - that improved recall by 24%. [...] LangSmith for observability, Ragas for automated faithfulness and relevancy evaluation, and RECOMP compression to cut token overhead by 48%. At NeuraSearch Laboratory I extended that discipline into a production RAG pipeline [...]. I also shipped end-to-end model deployment at CL Techno - fine-tuning a PyTorch model and shipping a Dockerised real-time inference system.
+
+**Honest-gap paragraph (use when a listed requirement is genuinely missing):**
+> [Company]'s stack is [X]-first, and I want to be upfront: I have shipped production code in [what's true], but [X] at expert level is a ramp I would close quickly on the job rather than claim now. The [what IS matched] are the parts I can hit the ground running on.
+
+**Closing:**
+> I would welcome the chance to discuss how my experience maps to your first 6-12 months. / I look forward to discussing how my experience maps to your team's roadmap.
+
 ## Submission Guidelines (Best Practice)
 - Submit only the documents the employer requests
 - Export as PDF to preserve formatting

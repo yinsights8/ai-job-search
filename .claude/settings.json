@@ -5,7 +5,13 @@
       "Bash(bun run:*)",
       "Bash(python salary_lookup.py:*)",
       "Bash(python3 salary_lookup.py:*)",
-      "Bash(pdftotext:*)"
+      "Bash(pdftotext:*)",
+      "Bash(python -m tools.email_scanner:plan*)",
+      "Bash(python -m tools.email_scanner:apply*)",
+      "Bash(python -m tools.email_scanner:revoke*)",
+      "Bash(python -m tools.email_scanner:status*)",
+      "Bash(python -m tools.email_scanner:auth-login*)",
+      "Bash(python -m tools.email_scanner:stats*)"
     ]
   }
 }
