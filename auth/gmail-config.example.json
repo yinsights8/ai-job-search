@@ -1,0 +1,9 @@
+{
+  "_comment": "OAuth 2.0 client credentials for the Gmail API (read-only). Copy this file to gmail-config.json and fill in your real values. See plan/01-auth.md for the one-time setup walkthrough and plan/02-scan-email.md for the full design.",
+  "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+  "client_secret": "GOCSPX-YOUR_CLIENT_SECRET",
+  "redirect_uri": "http://localhost:3000/oauth2callback",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly"
+  ]
+}

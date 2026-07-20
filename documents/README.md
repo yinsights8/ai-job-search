@@ -19,7 +19,12 @@ documents/
 │       ├── job_posting.md       # The original job posting (paste as text)
 │       ├── cover_letter.tex     # The cover letter you submitted
 │       ├── cv_draft.tex         # The CV variant you submitted
-│       └── outcome.md           # Result + notes (fill in after hearing back)
+│       ├── outcome.md           # Result + notes (fill in after hearing back)
+│       └── emails/              # Recruiter correspondence (populated by /scan-email)
+│           ├── _index.md        # Auto-maintained by /scan-email
+│           ├── <stem>.eml       # Raw RFC-822 message (byte-for-byte)
+│           ├── <stem>.md        # Full-fidelity human-readable mirror
+│           └── _attachments/<stem>/<filename>  # Original attachment
 └── README.md                    # This file
 ```
 
@@ -115,6 +120,8 @@ A record of past job applications. Each subfolder is one application.
 
 You can maintain these folders by hand, or let the **`/outcome`** command do it: it records progress updates and final results conversationally, archives the submitted drafts and the posting text, keeps `outcome.md` in the format below, and updates `job_search_tracker.csv` in the same step.
 
+**Tracker schema (canonical):** `job_search_tracker.csv` has the header `date,company,role,location,salary,source,status,notes,domain`. The Go dashboard parses the first 8 columns positionally — never reorder them; new columns are appended at the end only. `domain` is an optional explicit email-sending domain used by `/scan-email` matching.
+
 **Subfolder naming:** `<company>_<role>` — lowercase, underscores for spaces.
 
 Examples:
@@ -158,6 +165,49 @@ Any signal about what they valued or didn't?
 `in_progress` marks an application that is still open (used by `/outcome` for interview-stage updates before a resolution). `/setup`'s calibration draws conclusions only from applications with a final status.
 
 Application folders may also contain **`interview_prep_<stage>.md`** files written by `/interview` (one per interview stage, kept as history). `/setup` reads only the four files named above and ignores these.
+
+Application folders may also contain an **`emails/`** subdirectory populated by `/scan-email`. It holds the raw and human-readable copies of every recruiter email (inbound and outbound) for the application, plus attachments. See [`emails/` privacy note](#emails-per-application) below.
+
+### `emails/` (per application)
+
+`/scan-email` archives recruiter correspondence under `emails/` for each application: a `.eml` (raw, byte-for-byte RFC-822), a `.md` (full-fidelity human-readable mirror with all headers and body verbatim), and an `_attachments/` folder (every attachment saved as a separate file, original filename preserved).
+
+**This folder is the most sensitive content in the repo.** It contains:
+- Full email bodies, including forwarded chains
+- Full email headers (including `Authentication-Results`, `DKIM-Signature`, and the `Received` chain — useful for analysis, but exposes routing)
+- All attachments, which may include PDFs, Word documents, or other files recruiters sent. These can contain malware; do not open them unless you trust the sender.
+
+The folder is gitignored. It is not encrypted. If you sync your `Documents` folder to cloud storage, exclude `documents/applications/**/emails/` from the sync. Full-disk encryption (BitLocker on Windows, FileVault on macOS) is the recommended baseline.
+
+The full design and risk posture is in `plan/02-scan-email.md`.
+
+Application folders may also contain an **`emails/`** subdirectory populated by
+`/scan-email`. It holds the raw and human-readable copies of every recruiter
+email (inbound and outbound) for the application, plus attachments. See
+[`emails/` privacy note](#emails-per-application) below.
+
+### `emails/` (per application)
+
+`/scan-email` archives recruiter correspondence under `emails/` for each
+application: a `.eml` (raw, byte-for-byte RFC-822), a `.md` (full-fidelity
+human-readable mirror with all headers and body verbatim), and an
+`_attachments/` folder (every attachment saved as a separate file, original
+filename preserved).
+
+**This folder is the most sensitive content in the repo.** It contains:
+- Full email bodies, including forwarded chains
+- Full email headers (including `Authentication-Results`, `DKIM-Signature`,
+  and the `Received` chain — useful for analysis, but exposes routing)
+- All attachments, which may include PDFs, Word documents, or other files
+  recruiters sent. These can contain malware; do not open them unless you
+  trust the sender.
+
+The folder is gitignored. It is not encrypted. If you sync your `Documents`
+folder to cloud storage, exclude `documents/applications/**/emails/` from
+the sync. Full-disk encryption (BitLocker on Windows, FileVault on macOS)
+is the recommended baseline.
+
+The full design and risk posture is in `plan/02-scan-email.md`.
 
 **What `/setup` learns from outcome.md:**
 - Which role types and companies have led to interviews (signals strong fit areas)

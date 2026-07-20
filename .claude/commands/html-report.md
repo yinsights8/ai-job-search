@@ -17,9 +17,10 @@ Create `reports/` if it does not exist.
 Read in parallel:
 
 1. **`job_search_tracker.csv`** — the primary source. Parse every row into a record with fields:
-   `date`, `company`, `sector`, `role`, `role_type`, `channel`, `status`, `contact_person`, `fit_rating`, `notes`, `cv_file`, `cover_letter_file`, `source`
+   `date`, `company`, `role`, `location`, `salary`, `source`, `status`, `notes`, `domain`
 
 2. **`documents/applications/*/outcome.md`** — for each resolved application, read the outcome file to get the exact interview stages reached (the checkboxes) and any notes. Merge this into the matching tracker row by company+role fuzzy match (lowercase, ignore punctuation). If an archive exists for a row but there is no match, attach it as extra context anyway.
+3. **`documents/applications/*/emails/_index.md`** — if present (populated by `/scan-email`), count the emails per application and the breakdown by classification (rejection, interview-invite, offer, etc.). Add this to the per-application detail pane: "Emails archived: N (M rejection, K interview-invite, ...)" with a link to the `_index.md` for the full list. Also surface a sidebar listing tracker rows that have no `emails/` folder — these are applications that haven't been scanned yet.
 
 Status normalisation — map tracker values to five canonical buckets before computing stats:
 - `applied` → **Active** (resume submitted, no further signal)

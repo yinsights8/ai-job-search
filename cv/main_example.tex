@@ -1,8 +1,7 @@
-%% Example CV - [YOUR_NAME]
+%% Example CV - Firstname Lastname
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -24,18 +23,18 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Firstname Lastname - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{the candidate}{Lastname}
+\address{Glasgow, UK (open to remote and relocation)}{}{}
+\phone[mobile]{+44 (0) 0000 000 000}
+\email{candidate@example.com}
+\extrainfo{\href{https://www.linkedin.com/in/your-profile/}{LinkedIn}, \href{https://github.com/your-github}{GitHub}}
 
 \begin{document}
 
@@ -46,7 +45,7 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{AI Engineer with hands-on experience building production AI/ML systems from proof-of-concept through deployment. Combines LLM integration, RAG pipelines, and MLOps evaluation (LangSmith, Ragas) with solid deep learning foundations in PyTorch and TensorFlow. MSc in Advanced Computer Science with AI (University of Strathclyde), with a dissertation auditing bias in retrieval-augmented generation systems. Comfortable owning the end-to-end ML lifecycle: data preparation, model training, evaluation, containerised deployment, and production monitoring.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -56,15 +55,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{GenAI / LLMs}: LangChain, RAG (FAISS + BM25 + RRF hybrid retrieval), OpenAI API, Claude, LLaMA, prompt engineering, tool calling, MCP protocol, agentic workflows.
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{MLOps \& Evaluation}: LangSmith, Ragas (faithfulness, relevancy, hallucination rate), experiment tracking, post-deployment monitoring.
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Deep Learning}: PyTorch, TensorFlow 2.x, Keras, Hugging Face, CNN, Vision Transformers, transfer learning, fine-tuning.
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Data Science \& Statistics}: NumPy, Pandas, scikit-learn, hypothesis testing (Z-Test, ANOVA, Chi-Square), feature engineering, Power BI.
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Infrastructure}: Python, SQL, Docker, AWS (EC2, S3, SageMaker), FastAPI, Streamlit, MongoDB, FAISS, Linux, GitHub, AI-assisted development (Claude Code, Cursor).
 
 \end{itemize}
 
@@ -77,32 +76,47 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2025--2026}{AI Research Intern}{NeuraSearch Laboratory}{Glasgow, UK}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Built and evaluated an LLM-based RAG pipeline using OpenAI and LangChain, from prompt design and document ingestion through retrieval tuning and generation assessment.
+    \item Benchmarked hybrid retrieval strategies (BM25 vs dense retrieval, fixed vs semantic chunking), improving recall by 24\% on historical-language queries.
+    \item Applied RECOMP compression with LangSmith observability, reducing token overhead by 48\% while maintaining faithfulness scores.
+    \item Established an MLOps evaluation loop with LangSmith and Ragas, tracking faithfulness, hallucination rate, and retrieval quality post-deployment.
+    \item Led collection and preprocessing of a 1TB+ multimodal dataset; built a reusable Python pipeline achieving 97\% reduction in processing time per 100-document batch.
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2024--2025}{AI Engineer}{CL Techno}{London, UK (Remote)}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Fine-tuned a pre-trained deep learning model on a custom emotion dataset using PyTorch, improving multi-class accuracy from 84\% to 86\% through iterative augmentation and hyperparameter tuning.
+    \item Built a fully automated end-to-end ML pipeline covering preprocessing, augmentation, training, evaluation, and inference.
+    \item Containerised and deployed a real-time face and emotion recognition system using Docker, eliminating environment-related deployment failures.
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2023}{Data Analyst Intern}{Gamaka AI}{Pune, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Developed a customer spend-prediction model for e-commerce users using regression techniques, achieving 98\% validation accuracy.
+    \item Built data collection and analysis pipelines in Python and SQL; created Power BI dashboards for non-technical stakeholders.
 \end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     INDEPENDENT PROJECTS
+% ============================================================
+
+\section{Independent Projects}
+\vspace{1pt}
+\begin{itemize}
+
+\item \textbf{\href{https://github.com/your-github/example-project-2}{Archival RAG System}}: Production RAG application across 121,700+ documents using hybrid retrieval (FAISS + HuggingFace embeddings + BM25 with RRF), improving recall by 24\%. LLM observability and evaluation pipeline with LangSmith and Ragas; RECOMP compression cut token overhead by 48\%.
+
+\item \textbf{\href{https://github.com/your-github/example-project-3}{Violence Detection using Deep Learning}}: Fine-tuned a Vision Transformer (ViT) with PyTorch on ~3,000 images, achieving 98.82\% accuracy; benchmarking architecture across ResNet50, EfficientNet, MAML, and LSTM baselines.
 
 \end{itemize}
 
@@ -114,14 +128,8 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
-
-\vspace{3pt}
-
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
+\item{\cventry{2024--2025}{MSc Advanced Computer Science with AI}{University of Strathclyde}{Glasgow, UK}{}{\vspace{1pt}
+Dissertation: ``Auditing Bias in Retrieval-Augmented Generation Systems Using Cultural Heritage Archives.'' Modules: Machine Learning, Deep Learning, Big Data Tools and Techniques, Quantitative Methods for AI, Business Analysis.
 }}
 
 \end{itemize}
@@ -133,27 +141,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item English (professional). % TODO: confirm additional languages
 \end{itemize}
 
 % ============================================================

@@ -111,12 +111,17 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For AI Engineer / GenAI / LLM roles:** *[Used for: jpmorgan-chase_ai-ml]*
+> AI Engineer with hands-on experience building production AI/ML systems from proof-of-concept through deployment. Skilled in Python, PyTorch, scikit-learn, data preprocessing, and feature engineering alongside LLM integration, RAG pipelines, and MLOps evaluation. MSc in Advanced Computer Science with AI (University of Strathclyde), with a dissertation auditing bias in retrieval-augmented generation systems. Comfortable owning the end-to-end ML lifecycle: data preparation, model training, evaluation, containerised deployment, and production monitoring.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For Computer Vision / Deep Learning roles:** *[Used for: prisma-ai]*
+> AI Engineer with hands-on experience in computer vision, deep learning, and ML pipelines. Skilled in building and fine-tuning vision models (PyTorch, ViT) and deploying them to production via Docker. Strong problem-solving abilities and demonstrated capability in end-to-end model development from data preprocessing to deployment.
+
+**For Data Scientist / Analytics roles:** *[Used for: petpooja]*
+> Data Scientist and AI engineer with hands-on experience building machine learning algorithms, predictive models, and end-to-end ML pipelines from proof-of-concept through deployment. Proficient in Python, TensorFlow, and PyTorch, with a track record of applying AI techniques to solve real business problems through statistical analysis and large dataset exploration. Skilled at communicating data science findings to cross-functional teams.
+
+**For Research / ML Infrastructure roles:** *[Used for: humeai_senior-staff-ai-research-engineer - note: this variant stretches toward "distributed systems"; soften those claims unless defensible]*
+> AI Engineer with expertise in building robust model evaluation frameworks and benchmarking architectures. Proven track record in delivering production-ready ML pipelines, containerised deployment, and high-performance retrieval architectures with an emphasis on research-style rigor and engineering scalability.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 

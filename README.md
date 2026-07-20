@@ -150,6 +150,26 @@ Postings are treated as untrusted input (the workflow follows no instructions em
 
 `/reset` is also available, see [Starting over](#starting-over) below.
 
+## Dashboard
+
+Two dashboards visualize your application pipeline. Both read `job_search_tracker.csv` and `job_scraper/seen_jobs.json`, so run them from the repo root.
+
+**Interactive TUI** (Go, Bubble Tea) - build once, then launch:
+
+```bash
+go build -o dashboard/job-dashboard.exe ./dashboard   # requires Go; drop the .exe on macOS/Linux
+./dashboard/job-dashboard.exe
+```
+
+Running from another directory? Point it at the repo: `job-dashboard.exe -path /path/to/ai-job-search`.
+
+**One-shot snapshot** (Python, rich) - prints the pipeline once and exits:
+
+```bash
+pip install rich   # first time only
+python tools/job_dashboard.py
+```
+
 ## File structure
 
 ```
@@ -205,8 +225,10 @@ ai-job-search/
 │   ├── references/                    # Reference letters
 │   └── applications/                  # Past application records (<company>_<role>/)
 ├── .github/workflows/ci.yml           # CI: LaTeX smoke compiles, skill lint, CLI typechecks
+├── dashboard/                         # Interactive pipeline TUI (Go, Bubble Tea)
 ├── salary_lookup.py                   # Salary benchmarking tool (BYO data)
 ├── tools/
+│   ├── job_dashboard.py               # One-shot pipeline snapshot (Python, rich)
 │   ├── convert_salary_excel.py        # Convert salary Excel to JSON
 │   ├── lint_skills.py                 # CI lint for skills, commands, settings.json
 │   ├── security_guards.py             # CI guards: permission allowlist, gitignore rules, manifests

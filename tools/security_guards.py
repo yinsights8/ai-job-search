@@ -20,11 +20,19 @@ Checks:
 3. .agents/**/package.json — no npm/bun lifecycle scripts (preinstall,
    install, postinstall, prepare, prepack) and no trustedDependencies.
    Catches code execution smuggled into `bun install`.
+4. requirements.txt — every dependency must be pinned with `==` exactly.
+   Catches supply-chain widening (e.g. `>=` allowing silent major-version
+   upgrades that could exfiltrate data or escalate scope).
+5. .opencode/agents/email-scanner.md and .claude/agents/email-scanner.md —
+   the `tools:` allowlist must not contain `Bash(*)`, `WebFetch`,
+   `WebSearch`, `Write`, or `Edit`. Catches a future refactor that broadens
+   the email-scanner agent's reach beyond the read-only Gmail CLI.
 
 Stdlib only. Exit 0 on success, 1 with a failure list otherwise.
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -39,6 +47,15 @@ ALLOWED_PERMISSIONS = {
     "Bash(python salary_lookup.py:*)",
     "Bash(python3 salary_lookup.py:*)",
     "Bash(pdftotext:*)",
+    # email-scanner CLI subcommands. Each is subcommand-pinned (no `*`
+    # globs at the parent) so the agent can only call these specific
+    # subcommands. See plan/02-scan-email.md §8.
+    "Bash(python -m tools.email_scanner:plan*)",
+    "Bash(python -m tools.email_scanner:apply*)",
+    "Bash(python -m tools.email_scanner:revoke*)",
+    "Bash(python -m tools.email_scanner:status*)",
+    "Bash(python -m tools.email_scanner:auth-login*)",
+    "Bash(python -m tools.email_scanner:stats*)",
 }
 
 # Personal-data ignore rules that must never disappear from .gitignore.
@@ -165,16 +182,96 @@ def check_package_manifests() -> None:
             )
 
 
+def check_python_requirements() -> None:
+    """Every line in requirements.txt must be pinned with `==` exactly.
+    `>=` and unpinned deps are forbidden — they could be silently upgraded
+    to a malicious version on the next install."""
+    path = ROOT / "requirements.txt"
+    if not path.exists():
+        # No requirements.txt is fine — many setups have no Python deps.
+        return
+    relpath = path.relative_to(ROOT)
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError as exc:
+        errors.append(f"{relpath}: unreadable: {exc}")
+        return
+    for i, raw in enumerate(lines, start=1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        # Strip inline comments
+        if "#" in line:
+            line = line[: line.index("#")].strip()
+        # Allow `-r other.txt` and similar pip directives
+        if line.startswith("-"):
+            continue
+        if "==" not in line:
+            errors.append(
+                f"{relpath}:{i}: dep {line!r} is not pinned with `==`. "
+                "Use exact versions (e.g. `pydantic==2.9.2`) to prevent silent "
+                "supply-chain upgrades."
+            )
+
+
+def check_email_scanner_agent_allowlist() -> None:
+    """The email-scanner subagent's `tools:` allowlist must not contain
+    `Bash(*)`, `WebFetch`, `WebSearch`, `Write`, or `Edit`. Any of these
+    would break the read-only-on-Gmail safety posture."""
+    forbidden_in_allowlist = [
+        "Bash(*)",
+        "WebFetch",
+        "WebSearch",
+        "Write",
+        "Edit",
+    ]
+    for path in (ROOT / ".opencode" / "agents" / "email-scanner.md", ROOT / ".claude" / "agents" / "email-scanner.md"):
+        if not path.exists():
+            continue
+        relpath = path.relative_to(ROOT)
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            errors.append(f"{relpath}: unreadable: {exc}")
+            continue
+        # Extract the frontmatter block
+        m = re.match(r"^---\s*\n(.*?)\n---", text, re.DOTALL)
+        if not m:
+            errors.append(f"{relpath}: no frontmatter block found")
+            continue
+        frontmatter = m.group(1)
+        # Look for the `tools:` line and its (possibly multi-line) list
+        m2 = re.search(r"^tools:\s*\n((?:[ \t]+-.*\n?)+)", frontmatter, re.MULTILINE)
+        if not m2:
+            errors.append(f"{relpath}: no `tools:` list in frontmatter")
+            continue
+        tools_block = m2.group(1)
+        for forbidden in forbidden_in_allowlist:
+            if forbidden in tools_block:
+                errors.append(
+                    f"{relpath}: tools allowlist contains {forbidden!r}. "
+                    "The email-scanner subagent is read-only on Gmail and "
+                    "read-only on disk except via the `apply` subcommand. "
+                    f"Remove {forbidden} from the allowlist to preserve the "
+                    "safety posture."
+                )
+
+
 def main() -> int:
     check_permissions()
     check_gitignore()
     check_package_manifests()
+    check_python_requirements()
+    check_email_scanner_agent_allowlist()
     if errors:
         print(f"security_guards: {len(errors)} failure(s)")
         for err in errors:
             print(f"  - {err}")
         return 1
-    print("security_guards: OK (permissions allowlist, gitignore rules, package manifests)")
+    print(
+        "security_guards: OK (permissions allowlist, gitignore rules, "
+        "package manifests, requirements pinning, agent allowlists)"
+    )
     return 0
 
 

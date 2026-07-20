@@ -1,0 +1,29 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "instructions": [
+    "CLAUDE.md"
+  ],
+
+  "permission": {
+    "bash": {
+      "bun run *": "allow",
+      "python salary_lookup.py *": "allow",
+      "python3 salary_lookup.py *": "allow",
+      "pdftotext *": "allow",
+      "*": "ask"
+    },
+    "skill": {
+      "job-application-assistant": "allow",
+      "*": "ask"
+    }
+  },
+
+  "agent": {
+    "gemini-research-expert": {
+      "description": "Use this agent when the user needs to perform research tasks, gather information from external sources, or investigate topics that require web searches and synthesis of information.",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5"
+    }
+  }
+}

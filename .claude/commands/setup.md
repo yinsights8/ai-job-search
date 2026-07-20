@@ -105,6 +105,7 @@ Read each document found in Step A1. Process subfolders in this order: `cv/`, `l
 - `cover_letter.tex`: opening structure, body structure, bullet style, closing, recurring phrases
 - `cv_draft.tex`: profile statement, section ordering, framing for this role type
 - `outcome.md`: status (in_progress/hired/offer_declined/rejected/no_response/interview_only), interview stages, notes. Skip `in_progress` applications for calibration — they have no final signal yet.
+- `emails/_index.md` and `emails/<stem>.md` (if present, populated by `/scan-email`): per-email classification and key signals. Useful for surfacing what recruiters actually value beyond the simple outcome.md notes. Read each application's `emails/_index.md` and fold `classification` and `key_signals` into the calibration pass alongside `outcome.md`. Skip applications where `emails/` doesn't exist yet.
 
 After reading, proceed to Step A4 without intermediate output. The user sees a complete picture in Step A6.
 
